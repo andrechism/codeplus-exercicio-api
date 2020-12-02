@@ -27,7 +27,7 @@ function printProducts({ item }) {
     `;
     $productList.appendChild(products);
   });
-  const totalPrice = (item.reduce((acc, { bestPrice }) => acc + bestPrice, 0) / 100).toLocaleString('pt-BR', {style: "currency", currency: "BRL", minimumFractionDigits: 2});
+  const totalPrice = (item.reduce((acc, { bestPrice, quantity }) => acc + (bestPrice * quantity), 0) / 100).toLocaleString('pt-BR', {style: "currency", currency: "BRL", minimumFractionDigits: 2});
   $comprasTotal.innerHTML = `Total do pedido: <span>${totalPrice}</span>`;
 }
 
